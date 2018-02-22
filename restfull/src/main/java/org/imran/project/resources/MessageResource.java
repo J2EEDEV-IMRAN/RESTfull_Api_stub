@@ -27,10 +27,6 @@ public class MessageResource {
     @Path("/{test}")
     @Produces(MediaType.APPLICATION_JSON)
     public Message  getOneMessage(@PathParam("test") Long id) {
-    	System.out.println(messageService.getOneMessage(id).getMessageAuthor());
-    	System.out.println(messageService.getOneMessage(id).getMessageContent());
-    	System.out.println(messageService.getOneMessage(id).getCreationDate());
-    	
         return messageService.getOneMessage(id);
     } 
 }
