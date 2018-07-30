@@ -1,4 +1,4 @@
-package org.imran.project.resources;
+package com.example.restservice;
 
 import java.util.List;
 
