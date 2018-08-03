@@ -1,6 +1,7 @@
 package org.imran.project.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +26,29 @@ public class MessageService {
 		Message mes2=new Message(2L, "what about u", "imran");
 		allMessage.add(mes1);
 		allMessage.add(mes2);*/
+	
 		return new ArrayList<Message>(messages.values());
 	}
-
+	public List<Message> getFilteredMessageByYear(int year)
+	{
+		List<Message> yourMessages=new ArrayList<>();
+		Calendar ca=Calendar.getInstance();
+		for(Message message:messages.values())
+		{
+			ca.setTime(message.getCreationDate());
+			if(ca.get(Calendar.YEAR)==year)
+			{
+				yourMessages.add(message);
+			}
+		}
+		return yourMessages;
+	}
+	public List<Message> getPeginationMessageByStartOffset(int start,int offset)
+	{
+		List<Message> yoMessages =new ArrayList<>(messages.values());
+		if(start+offset>yoMessages.size())return new ArrayList<>();
+		return yoMessages.subList(start, offset);
+	}
 	public Message getOneMessage(Long id)
 	{
      return  messages.get(id);
